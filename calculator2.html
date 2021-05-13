@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <table border="1" style="text-align:center;">
+        <tr>
+            <td colspan="4"> <input id="display2"></td>
+        </tr>
+        <tr>
+            <td colspan="4"> <input id="display"></td>
+        </tr>
+        <tr>
+            <td><button>%</button></td>
+            <td><button>^</button></td>
+            <td colspan="2"><button onclick="AC()">AC</button></td>
+            
+        </tr>
+        <tr>
+            <td><button onclick="one()">1</button></td>
+            <td><button onclick="two()">2</button></td>
+            <td><button onclick="three()">3</button></td>
+            <td><button onclick="cong()">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="four()">4</button></td>
+            <td><button onclick="five()">5</button></td>
+            <td><button onclick="six()">6</button></td>
+            <td><button onclick="tru()">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="seven()">7</button></td>
+            <td><button onclick="eight()">8</button></td>
+            <td><button onclick="nine()">9</button></td>
+            <td><button onclick="nhan()">x</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="rezo()">0</button></td>
+            <td><button onclick="dot()">.</button></td>
+            <td><button onclick="ketqua()">=</button></td>
+            <td><button onclick="chia()">/</button></td>
+        </tr>
+    </table>
+    <script>
+        let checkTime="first";
+        let toantu="";
+        let kq;
+        let man_hinh = document.getElementById("display");
+        let man_hinh2 = document.getElementById("display2");
+        man_hinh2.value="kết quả: ";
+        function one(){
+            man_hinh.value +=1;
+        }
+        function two(){
+            man_hinh.value +=2;
+        }
+        function three(){
+            man_hinh.value +=3;
+        }
+        function four(){
+            man_hinh.value +=4;
+        }
+        function five(){
+            man_hinh.value +=5;
+        }
+        function six(){
+            man_hinh.value +=6;
+        }
+        function seven(){
+            man_hinh.value +=7;
+        }
+        function eight(){
+            man_hinh.value +=8;
+        }
+        function nine(){
+            man_hinh.value +=9;
+        }
+        function rez(){
+            man_hinh.value +=0;
+        }
+        function dot(){
+            man_hinh.value +=".";
+        }
+        function cong(){
+            if(checkTime ==="first")
+            {
+                kq=+man_hinh.value;
+                man_hinh.value="";
+                man_hinh2.value= "kết quả: "+ kq;
+                checkTime ="other";
+                
+                toantu="+";
+            }
+            else{
+            Toantu(toantu);
+            man_hinh.value="";
+            toantu="+";
+            man_hinh2.value= "kết quả: "+ kq; }   
+        }
+        function tru(){
+            if(checkTime ==="first")
+            {
+                kq=+man_hinh.value;
+                checkTime ="other";
+                man_hinh.value="";
+                man_hinh2.value= "kết quả: "+ kq;
+                toantu="-";
+            }else{
+            Toantu(toantu);
+            man_hinh.value="";
+            toantu="-";
+            man_hinh2.value= "kết quả: "+ kq;  }   
+        }
+        function nhan(){
+            if(checkTime ==="first")
+            {
+                kq=+man_hinh.value;
+                checkTime ="other";
+                man_hinh.value="";
+                man_hinh2.value= "kết quả: "+ kq;
+                toantu="nhan"
+            }else{
+            Toantu(toantu);
+            man_hinh.value="";
+            toantu="nhan";
+            man_hinh2.value= "kết quả: "+ kq;  }   
+        }
+        function chia(){
+            if(checkTime ==="first")
+            {
+                kq=+man_hinh.value;
+                checkTime ="other";
+                man_hinh.value="";
+                man_hinh2.value= "kết quả: "+ kq;
+                toantu="/";
+            }else{
+            Toantu(toantu);
+            man_hinh.value="";
+            toantu="/";
+            man_hinh2.value= "kết quả: "+ kq; }    
+        }
+        function ketqua(){
+            Toantu(toantu);
+            man_hinh.value="";
+            man_hinh2.value="kết quả: "+kq;
+        }
+        function Toantu(x){
+            switch(x)
+            {
+                case '+':{
+                    kq+=+man_hinh.value;
+                    break;
+                }
+                case '-':{
+                    kq-=+man_hinh.value;
+                    break;
+                }
+                case 'nhan':{
+                    kq*=+man_hinh.value;
+                    break;
+                }
+                case '/':{
+                    kq/=+man_hinh.value;
+                    break;
+                }
+            }
+
+        }
+        function AC(){
+            kq=0;
+            checkTime ="first";
+            man_hinh.value="";
+            man_hinh2.value="kết quả:";
+        }
+
+
+
+    </script>
+</body>
+</html>
